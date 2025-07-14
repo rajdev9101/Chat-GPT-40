@@ -5,18 +5,15 @@ import openai
 import os
 import threading
 
-# Flask app for Koyeb health check
 flask_app = Flask(__name__)
 
 @flask_app.route("/")
 def home():
-    return "✅ Rajdev Bot is Alive with Flask + Telegram + OpenAI!"
+    return "✅ Rajdev Bot is Alive (bot.py used)!"
 
-# Telegram /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("👋 Hello! I'm Rajdev's AI bot. Ask me anything!")
+    await update.message.reply_text("👋 Hello! I'm Rajdev's AI bot using bot.py!")
 
-# GPT message reply
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_input = update.message.text
     try:
@@ -49,3 +46,4 @@ def run_telegram():
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
     run_telegram()
+    
